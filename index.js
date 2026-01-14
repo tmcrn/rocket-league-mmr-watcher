@@ -18,7 +18,7 @@ const getRocketLeagueRating = async () => {
                 '--no-first-run',
                 '--no-zygote'
             ]
-            // ✅ Supprimé executablePath pour utiliser le Chrome de Puppeteer
+            // Supprimé executablePath pour utiliser le Chrome de Puppeteer
         });
 
         const page = await browser.newPage();
@@ -31,23 +31,23 @@ const getRocketLeagueRating = async () => {
             });
         });
 
-        console.log('📍 Navigation vers Tracker.gg...');
+        console.log('Navigation vers Tracker.gg...');
         await page.goto('https://tracker.gg/rocket-league/profile/psn/Snowthy/overview', {
             waitUntil: 'networkidle0',
             timeout: 60000
         });
 
-        console.log('⏳ Attente du chargement...');
+        console.log('Attente du chargement...');
         await new Promise(resolve => setTimeout(resolve, 4000));
 
-        console.log('📜 Scroll...');
+        console.log('Scroll...');
         await page.evaluate(() => window.scrollTo(0, 500));
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         await page.evaluate(() => window.scrollTo(0, 1000));
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        console.log('🔍 Recherche du MMR...');
+        console.log('Recherche du MMR...');
         await page.waitForSelector('div.mmr', { timeout: 10000 });
 
         const mmrData = await page.evaluate(() => {
@@ -101,7 +101,7 @@ const getRocketLeagueRating = async () => {
         return mmrData;
 
     } catch (error) {
-        console.error('💥 Erreur:', error.message);
+        console.error('Erreur:', error.message);
         if (browser) await browser.close();
         throw error;
     }
@@ -109,7 +109,7 @@ const getRocketLeagueRating = async () => {
 
 const sendDiscordNotification = async (oldMMR, newMMR, change) => {
     if (!DISCORD_WEBHOOK) {
-        console.log('⚠️  Pas de webhook Discord configuré');
+        console.log('❌ Pas de webhook Discord configuré');
         return;
     }
 
@@ -155,7 +155,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
         });
 
         if (response.ok) {
-            console.log('✅ Notification Discord envoyée');
+            console.log('Notification Discord envoyée');
         } else {
             console.error('❌ Erreur Discord:', response.statusText);
         }
@@ -188,7 +188,7 @@ const saveMMRData = async (mmrData) => {
         }
 
         await fs.writeFile(DATA_FILE, JSON.stringify(history, null, 2));
-        console.log('💾 Données sauvegardées');
+        console.log('Données sauvegardées');
 
         return entry;
     } catch (error) {
@@ -206,7 +206,7 @@ const getLastMMR = async () => {
             return history.entries[history.entries.length - 1].mmr;
         }
     } catch (err) {
-        console.log('📝 Pas d\'historique précédent');
+        console.log('Pas d\'historique précédent');
     }
     return null;
 }
@@ -214,7 +214,7 @@ const getLastMMR = async () => {
 // Main
 (async () => {
     try {
-        console.log('🚀 Lancement du tracker MMR...\n');
+        console.log('Lancement du tracker MMR...\n');
 
         const mmrData = await getRocketLeagueRating();
 
@@ -223,22 +223,22 @@ const getLastMMR = async () => {
             process.exit(1);
         }
 
-        console.log(`\n🎯 MMR actuel: ${mmrData.mmrFormatted} (${mmrData.mmr})`);
+        console.log(`\nMMR actuel: ${mmrData.mmrFormatted} (${mmrData.mmr})`);
 
         const lastMMR = await getLastMMR();
         await saveMMRData(mmrData);
 
         if (lastMMR !== null && lastMMR !== mmrData.mmr) {
             const change = mmrData.mmr - lastMMR;
-            console.log(`📊 Changement détecté: ${change > 0 ? '+' : ''}${change}`);
+            console.log(`Changement détecté: ${change > 0 ? '+' : ''}${change}`);
             await sendDiscordNotification(lastMMR, mmrData.mmr, change);
         } else if (lastMMR === null) {
-            console.log('📝 Premier enregistrement');
+            console.log('Premier enregistrement');
         } else {
-            console.log('✅ Pas de changement');
+            console.log('Pas de changement');
         }
 
-        console.log('\n✅ Tracker terminé avec succès');
+        console.log('\nTracker terminé avec succès');
         process.exit(0);
 
     } catch (error) {
