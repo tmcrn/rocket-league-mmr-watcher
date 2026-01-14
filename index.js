@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 
 const DATA_FILE = 'mmr-history.json';
-const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK;
 
 const getRocketLeagueRating = async () => {
     let browser;
