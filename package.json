@@ -1,0 +1,13 @@
+{
+  "name": "rocketleaguemmrwatcher",
+  "version": "1.0.0",
+  "description": "Track Rocket League MMR",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "puppeteer": "^24.35.0"
+  }
+}
