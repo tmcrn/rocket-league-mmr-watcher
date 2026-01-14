@@ -38,7 +38,7 @@ const getRocketLeagueRating = async () => {
         });
 
         console.log('⏳ Attente du chargement...');
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 4000));
 
         console.log('📜 Scroll...');
         await page.evaluate(() => window.scrollTo(0, 500));
