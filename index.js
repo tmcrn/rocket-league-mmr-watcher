@@ -114,7 +114,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
     }
 
 
-    const rank = getDivisionFromMMR(newMMR);
+    const progress = getRankProgressFromMMR(newMMR);
     const emoji = change > 0 ? '📈' : '📉';
     const color = change > 0 ? 3066993 : 15158332;
 
@@ -129,7 +129,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
             },
             {
                 name: 'Rank suivant',
-                value: `${rank}`,
+                value: `${progress.nextRank} dans ${progress.mmrToNextRank} MMR`,
                 inline: true
             },
             {
@@ -247,49 +247,56 @@ const getLastMMR = async () => {
     }
 })();
 
-function getDivisionFromMMR(mmr) {
-    const divisions = [
-        { min: 1862, max: 2032, div: "I" }, // SSL (division unique mais gardée cohérente)
+function getRankProgressFromMMR(mmr) {
+    const ladder = [
+        { min: 0,    name: "Bronze I", div: "I" },
+        { min: 168,  name: "Bronze II", div: "I" },
+        { min: 229,  name: "Bronze III", div: "I" },
 
-        // GC III
-        { min: 1715, max: 1736, div: "I" },
-        { min: 1744, max: 1775, div: "II" },
-        { min: 1788, max: 1817, div: "III" },
-        { min: 1832, max: 1857, div: "IV" },
+        { min: 294,  name: "Silver I", div: "I" },
+        { min: 354,  name: "Silver II", div: "I" },
+        { min: 415,  name: "Silver III", div: "I" },
 
-        // GC II
-        { min: 1575, max: 1597, div: "I" },
-        { min: 1601, max: 1637, div: "II" },
-        { min: 1646, max: 1660, div: "III" },
-        { min: 1677, max: 1698, div: "IV" },
+        { min: 474,  name: "Gold I", div: "I" },
+        { min: 534,  name: "Gold II", div: "I" },
+        { min: 593,  name: "Gold III", div: "I" },
 
-        // GC I
-        { min: 1435, max: 1458, div: "I" },
-        { min: 1462, max: 1495, div: "II" },
-        { min: 1498, max: 1526, div: "III" },
-        { min: 1537, max: 1559, div: "IV" },
+        { min: 644,  name: "Platinum I", div: "I" },
+        { min: 712,  name: "Platinum II", div: "I" },
+        { min: 772,  name: "Platinum III", div: "I" },
 
-        // Champion III
-        { min: 1315, max: 1333, div: "I" },
-        { min: 1335, max: 1367, div: "II" },
-        { min: 1368, max: 1396, div: "III" },
-        { min: 1402, max: 1419, div: "IV" },
+        { min: 833,  name: "Diamond I", div: "I" },
+        { min: 915,  name: "Diamond II", div: "I" },
+        { min: 995,  name: "Diamond III", div: "I" },
 
-        // Champion II
-        { min: 1195, max: 1213, div: "I" },
-        { min: 1215, max: 1247, div: "II" },
-        { min: 1248, max: 1278, div: "III" },
-        { min: 1282, max: 1299, div: "IV" },
+        { min: 1075, name: "Champion I", div: "I" },
+        { min: 1195, name: "Champion II", div: "I" },
+        { min: 1315, name: "Champion III", div: "I" },
 
-        // Champion I
-        { min: 1075, max: 1093, div: "I" },
-        { min: 1094, max: 1127, div: "II" },
-        { min: 1128, max: 1160, div: "III" },
-        { min: 1162, max: 1180, div: "IV" },
+        { min: 1435, name: "Grand Champion I", div: "I" },
+        { min: 1575, name: "Grand Champion II", div: "I" },
+        { min: 1715, name: "Grand Champion III", div: "I" },
+
+        { min: 1862, name: "Supersonic Legend", div: null },
     ];
 
-    const found = divisions.find(d => mmr >= d.min && mmr <= d.max);
-    return found ? `Division ${found.div}` : null;
+    let current = ladder[0];
+    let next = null;
+
+    for (let i = 0; i < ladder.length; i++) {
+        if (mmr >= ladder[i].min) {
+            current = ladder[i];
+            next = ladder[i + 1] || null;
+        }
+    }
+
+    return {
+        currentRank: current.name,
+        nextRank: next ? next.name : null,
+        mmrToNextRank: next ? next.min - mmr : 0
+    };
 }
+
+
 
 
