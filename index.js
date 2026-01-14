@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 
@@ -66,8 +68,9 @@ const getRocketLeagueRating = async () => {
                     const text = parent.textContent;
 
                     if (text.includes('Ranked Doubles 2v2') &&
-                        (text.includes('Champion') || text.includes('Division')) &&
-                        !text.includes('Casual')) {
+                        !text.includes('Casual')   &&
+                        !text.includes('Ranked Standard 3v3')   &&
+                        !text.includes('Ranked Duel 1v1')) {
 
                         if (text.includes('Current') || text.includes('Top')) {
                             return {
@@ -112,28 +115,31 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
         return;
     }
 
+
+    const rank = getDivisionFromMMR(newMMR);
     const emoji = change > 0 ? '📈' : '📉';
     const color = change > 0 ? 3066993 : 15158332;
 
     const embed = {
-        title: `${emoji} MMR Update - Ranked Doubles 2v2`,
+        title: `${emoji} MMR Update - Ranked Doubles 2v2 : ${newMMR}`,
         color: color,
         fields: [
             {
-                name: 'Ancien MMR',
-                value: `${oldMMR}`,
+                name: 'MMR',
+                value: `${newMMR}`,
                 inline: true
             },
             {
-                name: 'Nouveau MMR',
-                value: `${newMMR}`,
+                name: 'Rank suivant',
+                value: `${rank}`,
                 inline: true
             },
             {
                 name: 'Changement',
                 value: `${change > 0 ? '+' : ''}${change}`,
                 inline: true
-            }
+            },
+
         ],
         timestamp: new Date().toISOString(),
         footer: {
@@ -242,3 +248,50 @@ const getLastMMR = async () => {
         process.exit(1);
     }
 })();
+
+function getDivisionFromMMR(mmr) {
+    const divisions = [
+        { min: 1862, max: 2032, div: "I" }, // SSL (division unique mais gardée cohérente)
+
+        // GC III
+        { min: 1715, max: 1736, div: "I" },
+        { min: 1744, max: 1775, div: "II" },
+        { min: 1788, max: 1817, div: "III" },
+        { min: 1832, max: 1857, div: "IV" },
+
+        // GC II
+        { min: 1575, max: 1597, div: "I" },
+        { min: 1601, max: 1637, div: "II" },
+        { min: 1646, max: 1660, div: "III" },
+        { min: 1677, max: 1698, div: "IV" },
+
+        // GC I
+        { min: 1435, max: 1458, div: "I" },
+        { min: 1462, max: 1495, div: "II" },
+        { min: 1498, max: 1526, div: "III" },
+        { min: 1537, max: 1559, div: "IV" },
+
+        // Champion III
+        { min: 1315, max: 1333, div: "I" },
+        { min: 1335, max: 1367, div: "II" },
+        { min: 1368, max: 1396, div: "III" },
+        { min: 1402, max: 1419, div: "IV" },
+
+        // Champion II
+        { min: 1195, max: 1213, div: "I" },
+        { min: 1215, max: 1247, div: "II" },
+        { min: 1248, max: 1278, div: "III" },
+        { min: 1282, max: 1299, div: "IV" },
+
+        // Champion I
+        { min: 1075, max: 1093, div: "I" },
+        { min: 1094, max: 1127, div: "II" },
+        { min: 1128, max: 1160, div: "III" },
+        { min: 1162, max: 1180, div: "IV" },
+    ];
+
+    const found = divisions.find(d => mmr >= d.min && mmr <= d.max);
+    return found ? `Division ${found.div}` : null;
+}
+
+
