@@ -1,26 +1,24 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
-const path = require('path');
 
 const DATA_FILE = 'mmr-history.json';
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
+const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK_URL;
 
 const getRocketLeagueRating = async () => {
     let browser;
     try {
         browser = await puppeteer.launch({
-            headless: true, // IMPORTANT : headless pour GitHub Actions
+            headless: true,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-blink-features=AutomationControlled',
-                '--disable-dev-shm-usage', // Important pour CI/CD
+                '--disable-dev-shm-usage',
                 '--disable-gpu',
                 '--no-first-run',
-                '--no-zygote',
-                '--single-process' // Important pour les environnements limités
-            ],
-            executablePath: process.env.CHROME_BIN || '/usr/bin/chromium-browser'
+                '--no-zygote'
+            ]
+            // ✅ Supprimé executablePath pour utiliser le Chrome de Puppeteer
         });
 
         const page = await browser.newPage();
@@ -109,13 +107,13 @@ const getRocketLeagueRating = async () => {
 }
 
 const sendDiscordNotification = async (oldMMR, newMMR, change) => {
-    if (!DISCORD_WEBHOOK_URL) {
+    if (!DISCORD_WEBHOOK) {
         console.log('⚠️  Pas de webhook Discord configuré');
         return;
     }
 
     const emoji = change > 0 ? '📈' : '📉';
-    const color = change > 0 ? 3066993 : 15158332; // Vert ou Rouge
+    const color = change > 0 ? 3066993 : 15158332;
 
     const embed = {
         title: `${emoji} MMR Update - Ranked Doubles 2v2`,
@@ -144,7 +142,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
     };
 
     try {
-        const response = await fetch(DISCORD_WEBHOOK_URL, {
+        const response = await fetch(DISCORD_WEBHOOK, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -166,7 +164,6 @@ const saveMMRData = async (mmrData) => {
     try {
         let history = { entries: [] };
 
-        // Lire l'historique existant
         try {
             const data = await fs.readFile(DATA_FILE, 'utf8');
             history = JSON.parse(data);
@@ -174,7 +171,6 @@ const saveMMRData = async (mmrData) => {
             console.log('📝 Création du fichier historique');
         }
 
-        // Ajouter la nouvelle entrée
         const entry = {
             timestamp: new Date().toISOString(),
             mmr: mmrData.mmr,
@@ -183,12 +179,10 @@ const saveMMRData = async (mmrData) => {
 
         history.entries.push(entry);
 
-        // Garder seulement les 100 dernières entrées
         if (history.entries.length > 100) {
             history.entries = history.entries.slice(-100);
         }
 
-        // Sauvegarder
         await fs.writeFile(DATA_FILE, JSON.stringify(history, null, 2));
         console.log('💾 Données sauvegardées');
 
@@ -227,13 +221,9 @@ const getLastMMR = async () => {
 
         console.log(`\n🎯 MMR actuel: ${mmrData.mmrFormatted} (${mmrData.mmr})`);
 
-        // Récupérer le dernier MMR connu
         const lastMMR = await getLastMMR();
-
-        // Sauvegarder les nouvelles données
         await saveMMRData(mmrData);
 
-        // Envoyer notification si changement
         if (lastMMR !== null && lastMMR !== mmrData.mmr) {
             const change = mmrData.mmr - lastMMR;
             console.log(`📊 Changement détecté: ${change > 0 ? '+' : ''}${change}`);
