@@ -129,7 +129,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
             },
             {
                 name: 'Rank suivant',
-                value: `${progress.nextRank} dans ${progress.mmrToNextRank} MMR`,
+                value: `${progress.nextRank} dans ${progress.mmrToNextRank} MMR soit ${progress.countGame} games`,
                 inline: true
             },
             {
@@ -172,7 +172,7 @@ const saveMMRData = async (mmrData) => {
             const data = await fs.readFile(DATA_FILE, 'utf8');
             history = JSON.parse(data);
         } catch (err) {
-            console.log('📝 Création du fichier historique');
+            console.log('Création du fichier historique');
         }
 
         const entry = {
@@ -290,10 +290,13 @@ function getRankProgressFromMMR(mmr) {
         }
     }
 
+    let countGame = Math.ceil(mmrToNextRank / 9);
+
     return {
         currentRank: current.name,
         nextRank: next ? next.name : null,
-        mmrToNextRank: next ? next.min - mmr : 0
+        mmrToNextRank: next ? next.min - mmr : 0,
+        countGame: countGame
     };
 }
 
