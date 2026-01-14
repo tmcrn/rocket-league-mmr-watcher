@@ -2,8 +2,8 @@ name: MMR Tracker
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Toutes les 6 heures
-  workflow_dispatch:  # Permet de lancer manuellement
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   track-mmr:
@@ -21,25 +21,23 @@ jobs:
         with:
           node-version: '20'
       
-      # ✅ Cache pour accélérer les builds suivants
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
           path: |
             ~/.cache/puppeteer
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
           
       - name: Install dependencies
-        run: npm ci  # Plus rapide que npm install
+        run: npm install  # ✅ Changé de npm ci à npm install
         
       - name: Run MMR tracker
         run: node index.js
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
           
       - name: Commit and push if changed
         run: |
