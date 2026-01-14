@@ -1,0 +1,42 @@
+name: MMR Tracker
+
+on:
+  # schedule:
+    # Toutes les 6 heures
+    # - cron: '0 */6 * * *'
+  workflow_dispatch: # Permet de lancer manuellement
+
+jobs:
+  track-mmr:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Install Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+          
+      - name: Run MMR tracker
+        run: node index.js
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'MMR Bot'
+          git config --global user.email 'bot@github.com'
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update MMR data" && git push)
