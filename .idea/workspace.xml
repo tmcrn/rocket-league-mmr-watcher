@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="add rank images and improve Discord notification formatting">
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="rzezrfsdfersf">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +14,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -71,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768413086080</updated>
       <workItem from="1768413087224" duration="7207000" />
-      <workItem from="1768431316404" duration="5399000" />
+      <workItem from="1768431316404" duration="6303000" />
     </task>
     <task id="LOCAL-00001" summary="Add MMR tracker with GitHub Actions">
       <option name="closed" value="true" />
@@ -145,7 +144,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768436091497</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor Discord notification formatting to simplify and improve rank progress display">
+      <option name="closed" value="true" />
+      <created>1768436916195</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1768436916195</updated>
+    </task>
+    <task id="LOCAL-00011" summary="rzezrfsdfersf">
+      <option name="closed" value="true" />
+      <created>1768437193606</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1768437193606</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +175,8 @@
     <MESSAGE value="add goal ranked" />
     <MESSAGE value="add countGame" />
     <MESSAGE value="add rank images and improve Discord notification formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="add rank images and improve Discord notification formatting" />
+    <MESSAGE value="refactor Discord notification formatting to simplify and improve rank progress display" />
+    <MESSAGE value="rzezrfsdfersf" />
+    <option name="LAST_COMMIT_MESSAGE" value="rzezrfsdfersf" />
   </component>
 </project>

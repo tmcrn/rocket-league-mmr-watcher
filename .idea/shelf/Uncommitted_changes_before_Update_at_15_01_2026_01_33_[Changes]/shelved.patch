@@ -1,0 +1,74 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fd187d9f-0eda-410d-b427-ff2a28613166\" name=\"Changes\" comment=\"add rank images and improve Discord notification formatting\">\r\n      <change beforePath=\"$PROJECT_DIR$/index.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;tmcrn&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/tmcrn/rocket-league-mmr-watcher.git&quot;,\r\n    &quot;accountId&quot;: &quot;5816e592-1fea-4652-906a-c8e8a392b9d8&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"38G5UtXDSUzmaPJ13ZfWK6YQWjA\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;Node.js.index.js.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,\r\n    &quot;ts.external.directory.path&quot;: &quot;C:\\\\Program Files\\\\JetBrains\\\\WebStorm 2025.2.1\\\\plugins\\\\javascript-plugin\\\\jsLanguageServicesImpl\\\\external&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fd187d9f-0eda-410d-b427-ff2a28613166\" name=\"Changes\" comment=\"\" />\r\n      <created>1768413086080</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1768413086080</updated>\r\n      <workItem from=\"1768413087224\" duration=\"7207000\" />\r\n      <workItem from=\"1768431316404\" duration=\"5399000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add MMR tracker with GitHub Actions\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768416329039</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768416329039</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"change secret name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768417690351</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768417690351</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"change secret name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768424383412</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768424383412</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"change secret name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768426197570</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768426197570</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"sdfgopigfj\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768433280500</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768433280500</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"sdfgopigfj\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768433347821</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768433347821</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"add goal ranked\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768433727573</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768433727574</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"add countGame\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768434379691</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768434379691</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"add rank images and improve Discord notification formatting\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1768436091497</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1768436091497</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT\" value=\"false\" />\r\n    <option name=\"CHECK_NEW_TODO\" value=\"false\" />\r\n    <MESSAGE value=\"Add MMR tracker with GitHub Actions\" />\r\n    <MESSAGE value=\"change secret name\" />\r\n    <MESSAGE value=\"sdfgopigfj\" />\r\n    <MESSAGE value=\"add goal ranked\" />\r\n    <MESSAGE value=\"add countGame\" />\r\n    <MESSAGE value=\"add rank images and improve Discord notification formatting\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add rank images and improve Discord notification formatting\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c2a8268fc787d0753c08b27183ae66c4cc4b06e5)
++++ b/.idea/workspace.xml	(date 1768437212213)
+@@ -4,9 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="add rank images and improve Discord notification formatting">
+-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+-    </list>
++    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="rzezrfsdfersf" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -14,7 +12,6 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+   &quot;lastFilter&quot;: {
+@@ -71,7 +68,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1768413086080</updated>
+       <workItem from="1768413087224" duration="7207000" />
+-      <workItem from="1768431316404" duration="5399000" />
++      <workItem from="1768431316404" duration="5698000" />
+     </task>
+     <task id="LOCAL-00001" summary="Add MMR tracker with GitHub Actions">
+       <option name="closed" value="true" />
+@@ -145,7 +142,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1768436091497</updated>
+     </task>
+-    <option name="localTasksCounter" value="10" />
++    <task id="LOCAL-00010" summary="refactor Discord notification formatting to simplify and improve rank progress display">
++      <option name="closed" value="true" />
++      <created>1768436916195</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1768436916195</updated>
++    </task>
++    <task id="LOCAL-00011" summary="rzezrfsdfersf">
++      <option name="closed" value="true" />
++      <created>1768437193606</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1768437193606</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -160,6 +173,8 @@
+     <MESSAGE value="add goal ranked" />
+     <MESSAGE value="add countGame" />
+     <MESSAGE value="add rank images and improve Discord notification formatting" />
+-    <option name="LAST_COMMIT_MESSAGE" value="add rank images and improve Discord notification formatting" />
++    <MESSAGE value="refactor Discord notification formatting to simplify and improve rank progress display" />
++    <MESSAGE value="rzezrfsdfersf" />
++    <option name="LAST_COMMIT_MESSAGE" value="rzezrfsdfersf" />
+   </component>
+ </project>
+\ No newline at end of file
