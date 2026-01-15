@@ -2,8 +2,10 @@ name: MMR Tracker
 
 on:
   schedule:
-  - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
+  repository_dispatch:  # ✅ Ajoute cette ligne
+    types: [manual_trigger]  # ✅ Et celle-ci
 
 jobs:
   track-mmr:
@@ -44,4 +46,4 @@ jobs:
           git config --global user.name 'MMR Bot'
           git config --global user.email 'bot@github.com'
           git add mmr-history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update MMR data [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update MMR data [skip ci]" && git push)
