@@ -1,49 +1,9 @@
 {
   "entries": [
     {
-      "timestamp": "2026-01-14T21:24:58.339Z",
-      "mmr": 1226,
-      "mmrFormatted": "1,226"
-    },
-    {
-      "timestamp": "2026-01-14T21:31:55.903Z",
-      "mmr": 1245,
-      "mmrFormatted": "1,245"
-    },
-    {
-      "timestamp": "2026-01-14T21:40:26.090Z",
-      "mmr": 1245,
-      "mmrFormatted": "1,245"
-    },
-    {
-      "timestamp": "2026-01-14T21:54:57.588Z",
-      "mmr": 1245,
-      "mmrFormatted": "1,245"
-    },
-    {
-      "timestamp": "2026-01-14T22:21:08.969Z",
-      "mmr": 1254,
-      "mmrFormatted": "1,254"
-    },
-    {
       "timestamp": "2026-01-14T22:29:11.375Z",
       "mmr": 1254,
       "mmrFormatted": "1,254"
     },
-    {
-      "timestamp": "2026-01-14T23:38:03.756Z",
-      "mmr": 1263,
-      "mmrFormatted": "1,263"
-    },
-    {
-      "timestamp": "2026-01-14T23:42:51.382Z",
-      "mmr": 1263,
-      "mmrFormatted": "1,263"
-    },
-    {
-      "timestamp": "2026-01-14T23:58:24.654Z",
-      "mmr": 1263,
-      "mmrFormatted": "1,263"
-    }
   ]
 }
