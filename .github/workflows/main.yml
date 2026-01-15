@@ -32,7 +32,7 @@ jobs:
             ${{ runner.os }}-node-
           
       - name: Install dependencies
-        run: npm install  # ✅ Changé de npm ci à npm install
+        run: npm install
         
       - name: Run MMR tracker
         run: node index.js
@@ -44,4 +44,4 @@ jobs:
           git config --global user.name 'MMR Bot'
           git config --global user.email 'bot@github.com'
           git add mmr-history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📊 Update MMR data [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update MMR data [skip ci]" && git push)
