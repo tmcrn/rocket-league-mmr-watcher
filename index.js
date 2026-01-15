@@ -108,37 +108,37 @@ const getRocketLeagueRating = async () => {
 
 function getRankImage(rankName) {
     const rankImages = {
-        "Bronze I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20I.webp",
-        "Bronze II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20II.webp",
-        "Bronze III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20III.webp",
+        "Bronze I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Bronze%20I.webp",
+        "Bronze II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Bronze%20II.webp",
+        "Bronze III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Bronze%20III.webp",
 
-        "Silver I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20I.webp",
-        "Silver II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20II.webp",
-        "Silver III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20III.webp",
+        "Silver I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Silver%20I.webp",
+        "Silver II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Silver%20II.webp",
+        "Silver III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Silver%20III.webp",
 
-        "Gold I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20I.webp",
-        "Gold II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20II.webp",
-        "Gold III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20III.webp",
+        "Gold I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Gold%20I.webp",
+        "Gold II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Gold%20II.webp",
+        "Gold III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Gold%20III.webp",
 
-        "Platinum I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20I.webp",
-        "Platinum II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20II.webp",
-        "Platinum III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20III.webp",
+        "Platinum I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Platinum%20I.webp",
+        "Platinum II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Platinum%20II.webp",
+        "Platinum III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Platinum%20III.webp",
 
-        "Diamond I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20I.webp",
-        "Diamond II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20II.webp",
-        "Diamond III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20III.webp",
+        "Diamond I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Diamond%20I.webp",
+        "Diamond II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Diamond%20II.webp",
+        "Diamond III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Diamond%20III.webp",
 
-        "Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20I.webp",
-        "Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20II.webp",
-        "Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20III.webp",
+        "Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Champion%20I.webp",
+        "Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Champion%20II.webp",
+        "Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Champion%20III.webp",
 
-        "Grand Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20I.png",
-        "Grand Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20II.webp",
-        "Grand Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20III.png",
+        "Grand Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Grand%20Champion%20I.png",
+        "Grand Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Grand%20Champion%20II.webp",
+        "Grand Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Grand%20Champion%20III.png",
 
-        "Supersonic Legend": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/SSL.webp",
+        "Supersonic Legend": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/SSL.webp",
 
-        "Unranked": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Unranked.png"
+        "Unranked": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/master/logoRank/Unranked.png"
     };
 
     return rankImages[rankName] || rankImages["Unranked"];
