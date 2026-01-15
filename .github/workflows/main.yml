@@ -1,8 +1,6 @@
 name: MMR Tracker
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
   repository_dispatch:  # ✅ Ajoute cette ligne
     types: [manual_trigger]  # ✅ Et celle-ci
