@@ -18,7 +18,6 @@ const getRocketLeagueRating = async () => {
                 '--no-first-run',
                 '--no-zygote'
             ]
-            // Supprimé executablePath pour utiliser le Chrome de Puppeteer
         });
 
         const page = await browser.newPage();
@@ -66,8 +65,8 @@ const getRocketLeagueRating = async () => {
                     const text = parent.textContent;
 
                     if (text.includes('Ranked Doubles 2v2') &&
-                        !text.includes('Casual')   &&
-                        !text.includes('Ranked Standard 3v3')   &&
+                        !text.includes('Casual') &&
+                        !text.includes('Ranked Standard 3v3') &&
                         !text.includes('Ranked Duel 1v1')) {
 
                         if (text.includes('Current') || text.includes('Top')) {
@@ -107,38 +106,93 @@ const getRocketLeagueRating = async () => {
     }
 }
 
+function getRankImage(rankName) {
+    const rankImages = {
+        "Bronze I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20I.webp",
+        "Bronze II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20II.webp",
+        "Bronze III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Bronze%20III.webp",
+
+        "Silver I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20I.webp",
+        "Silver II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20II.webp",
+        "Silver III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Silver%20III.webp",
+
+        "Gold I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20I.webp",
+        "Gold II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20II.webp",
+        "Gold III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Gold%20III.webp",
+
+        "Platinum I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20I.webp",
+        "Platinum II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20II.webp",
+        "Platinum III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Platinum%20III.webp",
+
+        "Diamond I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20I.webp",
+        "Diamond II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20II.webp",
+        "Diamond III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Diamond%20III.webp",
+
+        "Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20I.webp",
+        "Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20II.webp",
+        "Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Champion%20III.webp",
+
+        "Grand Champion I": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20I.png",
+        "Grand Champion II": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20II.webp",
+        "Grand Champion III": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Grand%20Champion%20III.png",
+
+        "Supersonic Legend": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/SSL.webp",
+
+        "Unranked": "https://raw.githubusercontent.com/tmcrn/rocket-league-mmr-watcher/main/logoRank/Unranked.png"
+    };
+
+    return rankImages[rankName] || rankImages["Unranked"];
+}
+
 const sendDiscordNotification = async (oldMMR, newMMR, change) => {
     if (!DISCORD_WEBHOOK) {
         console.log('❌ Pas de webhook Discord configuré');
         return;
     }
 
-
     const progress = getRankProgressFromMMR(newMMR);
     const emoji = change > 0 ? '📈' : '📉';
     const color = change > 0 ? 3066993 : 15158332;
 
-    const embed = {
-        title: `${emoji} MMR Update - Ranked Doubles 2v2 : ${newMMR}`,
-        color: color,
-        fields: [
-            {
-                name: 'MMR',
-                value: `${newMMR}`,
-                inline: true
-            },
-            {
-                name: 'Rank suivant',
-                value: `${progress.nextRank} dans ${progress.mmrToNextRank} MMR soit ${progress.countGame} games`,
-                inline: true
-            },
-            {
-                name: 'Changement',
-                value: `${change > 0 ? '+' : ''}${change}`,
-                inline: true
-            },
+    const fields = [
+        {
+            name: '🏆 Rank Actuel',
+            value: `**${progress.currentRank}**`,
+            inline: true
+        },
+        {
+            name: '📊 MMR',
+            value: `**${newMMR}**`,
+            inline: true
+        },
+        {
+            name: '📈 Changement',
+            value: `**${change > 0 ? '+' : ''}${change}**`,
+            inline: true
+        }
+    ];
 
-        ],
+    if (progress.nextRank !== "SSL! 🏆") {
+        fields.push({
+            name: '🎯 Rank suivant',
+            value: `**${progress.nextRank}**\nDans ${progress.mmrToNextRank} MMR (~${progress.countGame} game${progress.countGame > 1 ? 's' : ''})`,
+            inline: false
+        });
+    } else {
+        fields.push({
+            name: '👑 Statut',
+            value: '**SUPERSONIC LEGEND - Tu es au rang maximum !**',
+            inline: false
+        });
+    }
+
+    const embed = {
+        title: `${emoji} MMR Update - Ranked Doubles 2v2`,
+        color: color,
+        fields: fields,
+        thumbnail: {
+            url: getRankImage(progress.currentRank)
+        },
         timestamp: new Date().toISOString(),
         footer: {
             text: 'Rocket League MMR Tracker'
@@ -155,7 +209,7 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
         });
 
         if (response.ok) {
-            console.log('Notification Discord envoyée');
+            console.log('✅ Notification Discord envoyée');
         } else {
             console.error('❌ Erreur Discord:', response.statusText);
         }
@@ -181,14 +235,20 @@ const saveMMRData = async (mmrData) => {
             mmrFormatted: mmrData.mmrFormatted
         };
 
-        history.entries.push(entry);
+        if (history.entries.length > 0 && history.entries[history.entries.length - 1].mmr === mmrData.mmr) {
+            history.entries[history.entries.length - 1].timestamp = entry.timestamp;
+            console.log('📝 Mise à jour du timestamp (MMR inchangé)');
+        } else {
+            history.entries.push(entry);
+            console.log('📝 Nouvelle entrée ajoutée (MMR modifié)');
+        }
 
         if (history.entries.length > 100) {
             history.entries = history.entries.slice(-100);
         }
 
         await fs.writeFile(DATA_FILE, JSON.stringify(history, null, 2));
-        console.log('Données sauvegardées');
+        console.log('💾 Données sauvegardées');
 
         return entry;
     } catch (error) {
@@ -209,6 +269,60 @@ const getLastMMR = async () => {
         console.log('Pas d\'historique précédent');
     }
     return null;
+}
+
+function getRankProgressFromMMR(mmr) {
+    const ladder = [
+        { min: 0,    name: "Bronze I" },
+        { min: 168,  name: "Bronze II" },
+        { min: 229,  name: "Bronze III" },
+
+        { min: 294,  name: "Silver I" },
+        { min: 354,  name: "Silver II" },
+        { min: 415,  name: "Silver III" },
+
+        { min: 474,  name: "Gold I" },
+        { min: 534,  name: "Gold II" },
+        { min: 593,  name: "Gold III" },
+
+        { min: 644,  name: "Platinum I" },
+        { min: 712,  name: "Platinum II" },
+        { min: 772,  name: "Platinum III" },
+
+        { min: 833,  name: "Diamond I" },
+        { min: 915,  name: "Diamond II" },
+        { min: 995,  name: "Diamond III" },
+
+        { min: 1075, name: "Champion I" },
+        { min: 1195, name: "Champion II" },
+        { min: 1315, name: "Champion III" },
+
+        { min: 1435, name: "Grand Champion I" },
+        { min: 1575, name: "Grand Champion II" },
+        { min: 1715, name: "Grand Champion III" },
+
+        { min: 1862, name: "Supersonic Legend" },
+    ];
+
+    let current = ladder[0];
+    let next = null;
+
+    for (let i = 0; i < ladder.length; i++) {
+        if (mmr >= ladder[i].min) {
+            current = ladder[i];
+            next = ladder[i + 1] || null;
+        }
+    }
+
+    const mmrToNextRank = next ? next.min - mmr : 0;
+    const countGame = Math.ceil(mmrToNextRank / 9);
+
+    return {
+        currentRank: current.name,
+        nextRank: next ? next.name : "SSL! 🏆",
+        mmrToNextRank: mmrToNextRank,
+        countGame: countGame
+    };
 }
 
 // Main
@@ -246,60 +360,3 @@ const getLastMMR = async () => {
         process.exit(1);
     }
 })();
-
-function getRankProgressFromMMR(mmr) {
-    const ladder = [
-        { min: 0,    name: "Bronze I", div: "I" },
-        { min: 168,  name: "Bronze II", div: "I" },
-        { min: 229,  name: "Bronze III", div: "I" },
-
-        { min: 294,  name: "Silver I", div: "I" },
-        { min: 354,  name: "Silver II", div: "I" },
-        { min: 415,  name: "Silver III", div: "I" },
-
-        { min: 474,  name: "Gold I", div: "I" },
-        { min: 534,  name: "Gold II", div: "I" },
-        { min: 593,  name: "Gold III", div: "I" },
-
-        { min: 644,  name: "Platinum I", div: "I" },
-        { min: 712,  name: "Platinum II", div: "I" },
-        { min: 772,  name: "Platinum III", div: "I" },
-
-        { min: 833,  name: "Diamond I", div: "I" },
-        { min: 915,  name: "Diamond II", div: "I" },
-        { min: 995,  name: "Diamond III", div: "I" },
-
-        { min: 1075, name: "Champion I", div: "I" },
-        { min: 1195, name: "Champion II", div: "I" },
-        { min: 1315, name: "Champion III", div: "I" },
-
-        { min: 1435, name: "Grand Champion I", div: "I" },
-        { min: 1575, name: "Grand Champion II", div: "I" },
-        { min: 1715, name: "Grand Champion III", div: "I" },
-
-        { min: 1862, name: "Supersonic Legend", div: null },
-    ];
-
-    let current = ladder[0];
-    let next = null;
-
-    for (let i = 0; i < ladder.length; i++) {
-        if (mmr >= ladder[i].min) {
-            current = ladder[i];
-            next = ladder[i + 1] || null;
-        }
-    }
-
-    let countGame = Math.ceil(mmrToNextRank / 9);
-
-    return {
-        currentRank: current.name,
-        nextRank: next ? next.name : null,
-        mmrToNextRank: next ? next.min - mmr : 0,
-        countGame: countGame
-    };
-}
-
-
-
-
