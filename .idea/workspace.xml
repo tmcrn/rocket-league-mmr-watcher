@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="Update .gitignore and clean up .idea workspace configurations" />
+    <list default="true" id="fd187d9f-0eda-410d-b427-ff2a28613166" name="Changes" comment="Update rank image URLs to use the `master` branch instead of `main`">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1768413086080</updated>
       <workItem from="1768413087224" duration="7207000" />
-      <workItem from="1768431316404" duration="6650000" />
+      <workItem from="1768431316404" duration="8132000" />
     </task>
     <task id="LOCAL-00001" summary="Add MMR tracker with GitHub Actions">
       <option name="closed" value="true" />
@@ -167,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768438337869</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Update rank image URLs to use the `master` branch instead of `main`">
+      <option name="closed" value="true" />
+      <created>1768438636411</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1768438636411</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +197,7 @@
     <MESSAGE value="rzezrfsdfersf" />
     <MESSAGE value="Update `.gitignore` with Node.js and WebStorm rules from gitignore.io." />
     <MESSAGE value="Update .gitignore and clean up .idea workspace configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update .gitignore and clean up .idea workspace configurations" />
+    <MESSAGE value="Update rank image URLs to use the `master` branch instead of `main`" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update rank image URLs to use the `master` branch instead of `main`" />
   </component>
 </project>
