@@ -154,42 +154,21 @@ const sendDiscordNotification = async (oldMMR, newMMR, change) => {
     const emoji = change > 0 ? '📈' : '📉';
     const color = change > 0 ? 3066993 : 15158332;
 
-    const fields = [
-        {
-            name: '🏆 Rank Actuel',
-            value: `**${progress.currentRank}**`,
-            inline: true
-        },
-        {
-            name: '📊 MMR',
-            value: `**${newMMR}**`,
-            inline: true
-        },
-        {
-            name: '📈 Changement',
-            value: `**${change > 0 ? '+' : ''}${change}**`,
-            inline: true
-        }
-    ];
+    // Construction de la description principale
+    let description = `${emoji} **${progress.currentRank}** | **${newMMR} MMR** | **${change > 0 ? '+' : ''}${change}**\n\n`;
 
+    // Ajout de l'objectif
     if (progress.nextRank !== "SSL! 🏆") {
-        fields.push({
-            name: '🎯 Rank suivant',
-            value: `**${progress.nextRank}**\nDans ${progress.mmrToNextRank} MMR (~${progress.countGame} game${progress.countGame > 1 ? 's' : ''})`,
-            inline: false
-        });
+        description += `**Objectif :**\n`;
+        description += `**${progress.nextRank}** : **${progress.mmrToNextRank} MMR** | ~**${progress.countGame} game${progress.countGame > 1 ? 's' : ''}**`;
     } else {
-        fields.push({
-            name: '👑 Statut',
-            value: '**SUPERSONIC LEGEND - Tu es au rang maximum !**',
-            inline: false
-        });
+        description += `👑 **SUPERSONIC LEGEND** - Tu es au rang maximum !`;
     }
 
     const embed = {
-        title: `${emoji} MMR Update - Ranked Doubles 2v2`,
+        title: '🏆 Ranked Doubles 2v2',
+        description: description,
         color: color,
-        fields: fields,
         thumbnail: {
             url: getRankImage(progress.currentRank)
         },
