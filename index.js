@@ -17,7 +17,10 @@ const getRocketLeagueRating = async () => {
                 '--disable-dev-shm-usage',
                 '--disable-gpu',
                 '--no-first-run',
-                '--no-zygote'
+                '--no-zygote',
+                '--single-process',  // ✅ Ajoute ces 3 lignes
+                '--disable-extensions',
+                '--disable-background-networking'
             ]
         });
 
@@ -33,23 +36,22 @@ const getRocketLeagueRating = async () => {
 
         console.log('Navigation vers Tracker.gg...');
         await page.goto('https://tracker.gg/rocket-league/profile/psn/Snowthy/overview', {
-            waitUntil: 'networkidle0',
-            timeout: 60000
+            waitUntil: 'domcontentloaded', 
+            timeout: 180000
         });
 
         console.log('Attente du chargement...');
-        await new Promise(resolve => setTimeout(resolve, 4000));
-
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        
         console.log('Scroll...');
         await page.evaluate(() => window.scrollTo(0, 500));
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
+        
         await page.evaluate(() => window.scrollTo(0, 1000));
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        await new Promise(resolve => setTimeout(resolve, 5000)); 
 
         console.log('Recherche du MMR...');
-        await page.waitForSelector('div.mmr', { timeout: 10000 });
-
+        await page.waitForSelector('div.mmr', { timeout: 30000 });
         const mmrData = await page.evaluate(() => {
             const mmrDivs = Array.from(document.querySelectorAll('div.mmr .value'));
 
