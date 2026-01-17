@@ -8,6 +8,7 @@ const getRocketLeagueRating = async () => {
     let browser;
     try {
         browser = await puppeteer.launch({
+            executablePath: '/usr/bin/chromium',
             headless: true,
             args: [
                 '--no-sandbox',
